@@ -46,6 +46,7 @@ enum {
   TxSequence = 840,
   NonDiscovery = 844,
   PrefixAnnouncement = 848,
+  Location = 852
 };
 
 enum {

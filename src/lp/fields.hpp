@@ -27,6 +27,7 @@
 #include "cache-policy.hpp"
 #include "nack-header.hpp"
 #include "prefix-announcement.hpp"
+#include "location.hpp"
 
 #include <boost/mpl/set.hpp>
 
@@ -134,7 +135,9 @@ typedef boost::mpl::set<
   AckField,
   TxSequenceField,
   NonDiscoveryField,
-  PrefixAnnouncementField
+  PrefixAnnouncementField,
+  DLocationField,
+  PLocationField
   > FieldSet;
 
 } // namespace lp
