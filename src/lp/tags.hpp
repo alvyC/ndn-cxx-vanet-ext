@@ -25,7 +25,8 @@
 #include "cache-policy.hpp"
 #include "empty-value.hpp"
 #include "prefix-announcement.hpp"
-#include "location.hpp"
+#include "plocation.hpp"
+#include "dlocation.hpp"
 #include "../tag.hpp"
 
 namespace ndn {
@@ -76,12 +77,12 @@ typedef SimpleTag<PrefixAnnouncement, 15> PrefixAnnouncementTag;
 /** \class DLocationTag
  * This tag can be attached to both Interest and Data.
 */
-typedef SimpleTag<Location, 16> DLocationTag;
+typedef SimpleTag<DLocation, 16> DLocationTag;
 
 /** \class PLocationTag
  * This tag can be attached to Interest.
 */
-typedef SimpleTag<Location, 17> PLocationTag;
+typedef SimpleTag<PLocation, 17> PLocationTag;
 
 } // namespace lp
 } // namespace ndn
