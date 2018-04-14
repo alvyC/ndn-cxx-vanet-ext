@@ -27,7 +27,8 @@
 #include "cache-policy.hpp"
 #include "nack-header.hpp"
 #include "prefix-announcement.hpp"
-#include "location.hpp"
+#include "plocation.hpp"
+#include "dlocation.hpp"
 
 #include <boost/mpl/set.hpp>
 
@@ -110,10 +111,23 @@ typedef FieldDecl<field_location_tags::Header,
                   tlv::PrefixAnnouncement> PrefixAnnouncementField;
 BOOST_CONCEPT_ASSERT((Field<PrefixAnnouncementField>));
 
+
+typedef FieldDecl<field_location_tags::Header,
+                  DLocation,
+                  tlv::DLocation> DLocationField;
+BOOST_CONCEPT_ASSERT((Field<DLocationField>));
+
+typedef FieldDecl<field_location_tags::Header,
+                  PLocation,
+                  tlv::PLocation> PLocationField;
+BOOST_CONCEPT_ASSERT((Field<PLocationField>));
+
 /** \brief Declare the Fragment field.
  *
  *  The fragment (i.e. payload) is the bytes between two provided iterators. During encoding,
  *  these bytes are copied from the Buffer into the LpPacket.
+ * The value of the wire encoded field is the data between the provided iterators. During
+ * encoding, the data is copied from the Buffer into the wire buffer.
  */
 typedef FieldDecl<field_location_tags::Fragment,
                   std::pair<Buffer::const_iterator, Buffer::const_iterator>,
@@ -136,7 +150,7 @@ typedef boost::mpl::set<
   TxSequenceField,
   NonDiscoveryField,
   PrefixAnnouncementField,
-  DLocationField,
+  //DLocationField,
   PLocationField
   > FieldSet;
 

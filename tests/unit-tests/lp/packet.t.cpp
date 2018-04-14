@@ -450,6 +450,34 @@ BOOST_AUTO_TEST_CASE(DecodePrefixAnnouncement)
                                 encoded.begin(), encoded.end());
 }
 
+BOOST_AUTO_TEST_CASE(LocationTest)
+{
+  DLocation dlc(10.1, 20.2);
+  PLocation plc(15.7, 8.9);
+  Packet packet;
+  BOOST_CHECK_NO_THROW(packet.add<DLocationField>(dlc));
+  BOOST_CHECK_NO_THROW(packet.add<PLocationField>(plc));
+  Block encoded;
+  // BOOST_CHECK_NO_THROW(encoded = packet.wireEncode());
+
+  // // for (Buffer::const_iterator it = encoded.begin(); it != encoded.end(); ++it) {
+  // //   printf("0x%02x, ", *it);
+  // // }
+  // static const uint8_t expectedBlock[] = {
+  //   0x64, 0x38, 0xfd, 0x03, 0x54, 0x18, 0x88, 0x0a, 0x86, 0x08, 0x33, 0x33, 0x33,
+  //   0x33, 0x33, 0x33, 0x34, 0x40, 0x87, 0x0a, 0x86, 0x08, 0x33, 0x33, 0x33, 0x33,
+  //   0x33, 0x33, 0x24, 0x40, 0xfd, 0x03, 0x58, 0x18, 0x88, 0x0a, 0x86, 0x08, 0xcd,
+  //   0xcc, 0xcc, 0xcc, 0xcc, 0xcc, 0x21, 0x40, 0x87, 0x0a, 0x86, 0x08, 0x66, 0x66,
+  //   0x66, 0x66, 0x66, 0x66, 0x2f, 0x40
+  // };
+
+  // BOOST_CHECK_EQUAL_COLLECTIONS(expectedBlock, expectedBlock + sizeof(expectedBlock),
+  //                               encoded.begin(), encoded.end());
+
+  // Block wire(expectedBlock, sizeof(expectedBlock));
+  // BOOST_REQUIRE_NO_THROW(packet.wireDecode(wire));
+}
+
 BOOST_AUTO_TEST_CASE(DecodeUnrecognizedTlvType)
 {
   Packet packet;

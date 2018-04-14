@@ -6,50 +6,71 @@
 namespace ndn {
 namespace lp {
 
-class Location {
-
-public:
-class Error : public ndn::tlv::Error
-{
-public:
-  explicit
-  Error(const std::string& what)
-    : ndn::tlv::Error(what)
-  {
-  }
-};
-
+namespace location {
   enum {
     Double = 134,
     Longitude = 135,
     Latitude = 136
   };
+}
 
-  Location();
+// class Location {
 
-  Location(double, double);
+// public:
+// class Error : public ndn::tlv::Error
+// {
+// public:
+//   explicit
+//   Error(const std::string& what)
+//     : ndn::tlv::Error(what)
+//   {
+//   }
+// };
 
-  template<encoding::Tag TAG>
-  size_t
-  wireEncode(EncodingImpl<TAG>& encoder) const;
+//   enum {
+//     Double = 134,
+//     Longitude = 135,
+//     Latitude = 136
+//   };
 
-  void
-  wireDecode(const Block& wire);
+//   Location();
 
-  double
-  getLongitude() const {
-    return m_longitude;
-  }
+//   Location(double, double);
 
-  double
-  getLatitude() const {
-    return m_latitude;
-  }
+//   template<encoding::Tag TAG>
+//   size_t
+//   wireEncode(EncodingImpl<TAG>& encoder) const;
 
-private:
-  double m_longitude;
-  double m_latitude;
-};
+//   // const Block&
+//   // wireEncode() const;
+
+//   void
+//   wireDecode(const Block& wire);
+
+//   double
+//   getLongitude() const {
+//     return m_longitude;
+//   }
+
+//   void
+//   setLongitude(const double lg) {
+//     m_longitude = lg;
+//   }
+
+//   double
+//   getLatitude() const {
+//     return m_latitude;
+//   }
+
+//   void
+//   setLaitude(const double lt) {
+//     m_latitude = lt;
+//   }
+
+// private:
+//   double m_longitude;
+//   double m_latitude;
+// };
 
 }
 }
