@@ -130,7 +130,6 @@ Packet::Packet(const Block& wire)
 Block
 Packet::wireEncode() const
 {
-  std::cout << "Packet::wireEncode()" << std::endl;
   // If no header or trailer, return bare network packet
   Block::element_container elements = m_wire.elements();
   if (elements.size() == 1 && elements.front().type() == FragmentField::TlvType::value) {
@@ -145,8 +144,6 @@ Packet::wireEncode() const
 void
 Packet::wireDecode(const Block& wire)
 {
-  std::cout << "Packet::wireDecode()" << std::endl;
-
   if (wire.type() == ndn::tlv::Interest || wire.type() == ndn::tlv::Data) {
     m_wire = Block(tlv::LpPacket);
     add<FragmentField>(make_pair(wire.begin(), wire.end()));
